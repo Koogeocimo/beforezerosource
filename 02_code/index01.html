@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>在那出現之前 Before Zero</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html, body {
+      width: 100%;
+      min-height: 100%;
+      overflow-x: hidden;
+      background: #888;
+    }
+
+    body {
+      font-family: "Noto Sans TC", "Microsoft JhengHei", "PingFang TC", sans-serif;
+    }
+
+    .hero {
+      position: relative;
+      width: 100%;
+      background: #888;
+    }
+
+    .hero-desktop,
+    .hero-mobile {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      background: #888;
+    }
+
+    .hero-desktop { display: block; }
+    .hero-mobile  { display: none; }
+
+    .fixed-favicon {
+      position: fixed;
+      top: 20px; left: 20px;
+      width: 40px; height: 40px;
+      object-fit: contain;
+      z-index: 9999;
+      pointer-events: none;
+    }
+
+    /* ========================= DESKTOP ========================= */
+    .frame7 {
+      position: absolute;
+      left: 50%; top: 0;
+      width: 1440px; height: 3050px;
+      overflow: hidden;
+      background: #ffffff;
+      transform-origin: top center;
+      will-change: transform;
+    }
+
+    .frame7 > * { position: absolute; }
+
+    .frame7 .bg {
+      left: -123px; top: -16px;
+      width: 1685px; height: 3072px;
+      object-fit: cover;
+    }
+
+    .frame7 .redlight {
+      left: -359px; top: -332px;
+      width: 1920px; height: 3500px;
+      object-fit: cover;
+    }
+
+    .frame7 .art-0510 {
+      left: -506px; top: -780px;
+      width: 2552.37px; height: 4338px;
+      object-fit: cover;
+    }
+
+    .frame7 .art-0104,
+    .frame7 .art-1115,
+    .frame7 .art-1619 {
+      left: -455.57px; top: 214.96px;
+      width: 2451.5px; height: 3343.04px;
+      object-fit: cover;
+    }
+
+    .frame7 .grad-overlay {
+      left: 4px; top: 1024px;
+      width: 1436px; height: 1023px;
+      background: linear-gradient(
+        to top,
+        rgba(87,87,87,0) 0%,
+        rgba(98,98,98,0.10) 3.37%,
+        rgba(107,107,107,0.82) 25%,
+        rgba(139,139,139,1) 90%,
+        rgba(189,189,189,0) 100%
+      );
+      opacity: 0.40;
+    }
+
+    .frame7 .ellipse {
+      left: 699px; top: 1232px;
+      width: 534px; height: 575px;
+      border-radius: 50%;
+      background: radial-gradient(circle,
+        rgba(160,158,154,0.27) 0%,
+        rgba(160,158,154,0.20) 83%,
+        rgba(160,158,154,0) 100%
+      );
+      filter: blur(48px);
+    }
+
+    .frame7 .title-img {
+      left: 433px; top: 113px;
+      width: 862px; height: 425px;
+      object-fit: contain;
+    }
+
+    .frame7 .venue {
+      left: 783px; top: 214px;
+      width: 467px; height: 60px;
+      color: #efefef;
+      font-size: 20px; font-weight: 300;
+      letter-spacing: 2px; line-height: 1.55;
+      text-align: right;
+    }
+
+    .frame7 .date-group { left: 689px; top: 20px; }
+
+    .frame7 .date-range {
+      position: absolute; left: 0; top: 0;
+      width: 577px; height: 159px;
+      color: #efefef;
+      font-size: 64px; font-weight: 300;
+      letter-spacing: 7.68px; line-height: 0.71875;
+      text-align: right;
+      display: flex; align-items: flex-end; justify-content: flex-end;
+    }
+
+    .frame7 .date-year {
+      position: absolute; left: 96px; top: 120px;
+      width: 95px; height: 41px;
+      color: #efefef;
+      font-size: 20px; font-weight: 300;
+      letter-spacing: 2px; line-height: 1;
+      text-align: right;
+      display: flex; align-items: flex-end; justify-content: flex-end;
+    }
+
+    /* ---- Desktop scrolling strip ---- */
+    /* Card: 222.53px wide, gap: 16px
+       One set of 8 cards = 8*222.53 + 7*16 = 1780.24 + 112 = 1892.24px
+       Animate by -1892.24px so set B takes over seamlessly             */
+    .frame7 .promo-strip-wrap {
+      left: 0; top: 519px;
+      width: 1440px; height: 396.42px;
+      overflow: hidden;
+    }
+
+    .frame7 .promo-strip {
+      display: flex;
+      gap: 16px;
+      width: max-content;
+      height: 100%;
+      animation: scrollStrip 80s linear infinite;
+    }
+
+    @keyframes scrollStrip {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-1892.24px); }
+    }
+
+    .frame7 .promo-strip .promo-card {
+      flex-shrink: 0;
+      width: 222.53px; height: 396.42px;
+      background: #343c55;
+      overflow: hidden;
+    }
+
+    .frame7 .promo-strip .promo-card iframe,
+    .handy02 .promo-strip .promo-card iframe {
+      width: 100%; height: 100%;
+      border: none; display: block;
+    }
+
+    .frame7 .promo-horizontal {
+      left: 87px; top: 1361px;
+      width: 621.5px; height: 349px;
+      background: #d9d9d9;
+      overflow: hidden;
+    }
+
+    .frame7 .promo-horizontal iframe,
+    .handy02 .promo-horizontal iframe {
+      width: 100%; height: 100%;
+      border: none; display: block;
+    }
+
+    .frame7 .body-text {
+      left: 770px; top: 1281px;
+      width: 452px;
+      color: #efefef;
+      font-size: 16px; font-weight: 300;
+      letter-spacing: 1.6px; line-height: 1.8125;
+      text-align: center;
+    }
+
+    /* ========================= MOBILE ========================= */
+    .handy02 {
+      position: absolute;
+      left: 50%; top: 0;
+      width: 390px; height: 1688px;
+      overflow: hidden;
+      background: #ffffff;
+      transform-origin: top center;
+      will-change: transform;
+    }
+
+    .handy02 > * { position: absolute; }
+
+    .handy02 .bg {
+      left: -296px; top: -10px;
+      width: 978px; height: 1783px;
+      object-fit: cover;
+    }
+
+    .handy02 .redlight {
+      left: -260.37px; top: -557px;
+      width: 1153.45px; height: 2640.80px;
+      object-fit: cover;
+      transform: rotate(10.02deg);
+      transform-origin: 50% 50%;
+      opacity: 0.75;
+    }
+
+    .handy02 .art-0510 {
+      left: -404px; top: -212px;
+      width: 1348.11px; height: 2291.25px;
+      object-fit: cover;
+    }
+
+    .handy02 .art-0104,
+    .handy02 .art-1115 {
+      left: -377.36px; top: 313.52px;
+      width: 1294.84px; height: 1765.73px;
+      object-fit: cover;
+    }
+
+    .handy02 .art-1619 {
+      left: -377.36px; top: 313.29px;
+      width: 1294.84px; height: 1765.73px;
+      object-fit: cover;
+    }
+
+    .handy02 .grad-overlay {
+      left: 2px; top: 716px;
+      width: 390px; height: 972px;
+      background: linear-gradient(
+        to top,
+        rgba(87,87,87,0) 0%,
+        rgba(98,98,98,0.10) 3.37%,
+        rgba(107,107,107,1) 10.13%,
+        rgba(189,189,189,1) 100%
+      );
+      opacity: 0.40;
+    }
+
+    .handy02 .title-img {
+      left: -2px; top: 182px;
+      width: 397px; height: 196px;
+      object-fit: contain;
+    }
+
+    /* ---- Mobile scrolling strip ----
+       Card: 147.78px wide, gap: 10px
+       One set of 8 = 8*147.78 + 7*10 = 1182.24 + 70 = 1252.24px      */
+    .handy02 .promo-strip-wrap {
+      left: 0; top: 452px;
+      width: 390px; height: 263.25px;
+      overflow: hidden;
+    }
+
+    .handy02 .promo-strip {
+      display: flex;
+      gap: 10px;
+      width: max-content;
+      height: 100%;
+      animation: scrollStripMobile 80s linear infinite;
+    }
+
+    @keyframes scrollStripMobile {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-1252.24px); }
+    }
+
+    .handy02 .promo-strip .promo-card {
+      flex-shrink: 0;
+      width: 147.78px; height: 263.25px;
+      background: #343c55;
+      overflow: hidden;
+    }
+
+    .handy02 .date-group { left: 36px; top: 830px; }
+
+    .handy02 .date-range {
+      position: absolute; left: 0; top: 0;
+      width: 257px; height: 53px;
+      color: #efefef;
+      font-size: 40px; font-weight: 300;
+      letter-spacing: 4px; line-height: 1.15;
+      text-align: center;
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    .handy02 .date-year {
+      position: absolute; left: 220px; top: 27px;
+      width: 74px; height: 19px;
+      color: #efefef;
+      font-size: 16px; font-weight: 300;
+      letter-spacing: 1.6px; line-height: 1.25;
+      text-align: right;
+      display: flex; align-items: flex-end; justify-content: flex-end;
+    }
+
+    .handy02 .venue {
+      position: absolute; left: 0; top: 38px;
+      width: 328px; height: 43px;
+      color: #efefef;
+      font-size: 16px; font-weight: 300;
+      letter-spacing: 1.6px; line-height: 1.375;
+      text-align: right;
+      display: flex; align-items: center; justify-content: flex-end;
+    }
+
+    .handy02 .promo-horizontal {
+      left: 0; top: 934px;
+      width: 390px; height: 219px;
+      background: #d9d9d9;
+      overflow: hidden;
+    }
+
+    .handy02 .body-text {
+      left: 33px; top: 1186px;
+      width: 325px;
+      color: #efefef;
+      font-size: 13px; font-weight: 300;
+      letter-spacing: 1.3px; line-height: 1.6923;
+      text-align: center;
+    }
+
+    @media (max-width: 768px) {
+      .hero-desktop { display: none; }
+      .hero-mobile  { display: block; }
+      .fixed-favicon { top: 16px; left: 16px; width: 32px; height: 32px; }
+    }
+  </style>
+</head>
+<body>
+  <img class="fixed-favicon" src="https://raw.githubusercontent.com/Koogeocimo/beforezerosource/main/01_image/scrolling3/faviconW01.webp" alt="Logo" />
+
+  <section class="hero">
+
+    <!-- ========== DESKTOP ========== -->
+    <div class="hero-desktop">
+      <div class="frame7">
+        <img class="bg"       src="https://raw.githubusercontent.com/Koogeocimo/beforezerosource/main/01_image/scrolling3/bg_gray.webp" alt="" />
+        <img class="redlight" src="https://raw.githubusercontent.com/Koogeocimo/beforezerosource/main/01_image/scrolling3/00_redlight.webp" alt="" />
+
+        <!--
+          SCROLLING VIDEO STRIP — 8 cards × 2 sets (A+B) for seamless infinite loop.
+          To update videos when you have all links: replace the YouTube ID in each iframe src.
+          IDs to update are: OJM2sMiElec, ammlG39hirg, VGA_L5BpYC4 (slots 4-8 are placeholders).
+          Both SET A and SET B must have the same order.
+        -->
+        <div class="promo-strip-wrap">
+          <div class="promo-strip">
+            <!-- SET A -->
+            <div class="promo-card"><iframe src="https://www.youtube.com/embed/lcdZ90OQtLI?autoplay=1&muted=1&controls=0&loop=1&playlist=lcdZ90OQtLI&rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+            <div class="promo-card"><iframe src="https://www.youtube.com/embed/lcdZ90OQtLI?autoplay=1&muted=1&controls=0&loop=1&playlist=lcdZ90OQtLI&rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+            <div class="promo-card"><iframe src="https://www.youtube.com/embed/lcdZ90OQtLI?autoplay=1&muted=1&controls=0&loop=1&playlist=lcdZ90OQtLI&rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+            <div class="promo-card"><iframe src="https://www.youtube.com/embed/lcdZ90OQtLI?autoplay=1&muted=1&controls=0&loop=1&playlist=lcdZ90OQtLI&rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+            <div class="promo-card"><iframe src="https://www.youtube.com/embed/lcdZ90OQtLI?autoplay=1&muted=1&controls=0&loop=1&playlist=lcdZ90OQtLI&rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+            <div class="promo-card"><iframe src="https://www.youtube.com/embed/lcdZ90OQtLI?autoplay=1&muted=1&controls=0&loop=1&playlist=lcdZ90OQtLI&rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+            <div class="promo-card"><iframe src="https://www.youtube.com/embed/lcdZ90OQtLI?autoplay=1&muted=1&controls=0&loop=1&playlist=lcdZ90OQtLI&rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+            <div class="promo-card"><iframe src="https://www.youtube.com/embed/lcdZ90OQtLI?autoplay=1&muted=1&controls=0&loop=1&playlist=lcdZ90OQtLI&rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+            <!-- SET B (exact duplicate — do not change order) -->
+            <div class="promo-card"><iframe src="https://www.youtube.com/embed/lcdZ90OQtLI?autoplay=1&muted=1&controls=0&loop=1&playlist=lcdZ90OQtLI&rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+            <div class="promo-card"><iframe src="https://www.youtube.com/embed/lcdZ90OQtLI?autoplay=1&muted=1&controls=0&loop=1&playlist=lcdZ90OQtLI&rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+            <div class="promo-card"><iframe src="https://www.youtube.com/embed/lcdZ90OQtLI?autoplay=1&muted=1&controls=0&loop=1&playlist=lcdZ90OQtLI&rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+            <div class="promo-card"><iframe src="https://www.youtube.com/embed/lcdZ90OQtLI?autoplay=1&muted=1&controls=0&loop=1&playlist=lcdZ90OQtLI&rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+            <div class="promo-card"><iframe src="https://www.youtube.com/embed/lcdZ90OQtLI?autoplay=1&muted=1&controls=0&loop=1&playlist=lcdZ90OQtLI&rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+            <div class="promo-card"><iframe src="https://www.youtube.com/embed/lcdZ90OQtLI?autoplay=1&muted=1&controls=0&loop=1&playlist=lcdZ90OQtLI&rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+            <div class="promo-card"><iframe src="https://www.youtube.com/embed/lcdZ90OQtLI?autoplay=1&muted=1&controls=0&loop=1&playlist=lcdZ90OQtLI&rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+            <div class="promo-card"><iframe src="https://www.youtube.com/embed/lcdZ90OQtLI?autoplay=1&muted=1&controls=0&loop=1&playlist=lcdZ90OQtLI&rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+          </div>
+        </div>
+
+        <img class="art-0510" src="https://raw.githubusercontent.com/Koogeocimo/beforezerosource/main/01_image/scrolling3/0510_02.webp" alt="" />
+        <img class="art-0104" src="https://raw.githubusercontent.com/Koogeocimo/beforezerosource/main/01_image/scrolling3/0104_02.webp" alt="" />
+        <img class="art-1115" src="https://raw.githubusercontent.com/Koogeocimo/beforezerosource/main/01_image/scrolling3/1115_02.webp" alt="" />
+        <img class="art-1619" src="https://raw.githubusercontent.com/Koogeocimo/beforezerosource/main/01_image/scrolling3/1619_02.webp" alt="" />
+
+        <div class="grad-overlay"></div>
+        <div class="ellipse"></div>
+
+        <img class="title-img" src="https://raw.githubusercontent.com/Koogeocimo/beforezerosource/main/01_image/scrolling3/titleword_row.png" alt="在那出現之前 BEFORE ZERO" />
+
+        <div class="venue">國立臺灣科學教育館<br />東側特展區 七、八樓</div>
+
+        <div class="date-group">
+          <div class="date-range">0508-0517</div>
+          <div class="date-year">2026</div>
+        </div>
+
+        <div class="promo-horizontal">
+          <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ?si=VkerXtSVT1FphWzF&autoplay=1&muted=1&controls=0&loop=1&playlist=dQw4w9WgXcQ" allow="autoplay; encrypted-media" allowfullscreen title="宣傳片 橫向"></iframe>
+        </div>
+
+        <div class="body-text">
+          在生成與流逝之間，存在著一段尚未被命名的過程；語言還未介入；形象仍在醞釀；唯有感知、技術與物質在暗中流動，為即將到來的「出現」開闢場域。<br /><br />
+          如今，科技與工具不斷更新、被快速複製與疊代，壓縮著「之前」與「之後」的距離，讓我們不禁回到一個根本的提問：當「新媒體藝術」與技術演進並行，我們如何能透過自身經驗與創作去回應這些逐漸扁平的臨界時刻？<br /><br />
+          本屆北藝大新媒體藝術學系111級畢業展「在那出現之前 Before Zero」，匯集了多件創作共同關注那些「尚未」的狀態：在思維被語言包覆之前、在影像被意識捕捉之前，當世界未定形之際，我們期待透過光影、聲響、資料與敘事的交錯，邀請觀眾游移在那個「之前」，共同感受潛伏其中的細微線索。<br /><br />
+          我們透過未知來預留空間，既向後回望，也向前逼近，讓「臨界」不再是值與線，而能構成一個場域。在「那」出現之前，得以深刻感受蠢蠢欲動的未定狀態。
+        </div>
+      </div>
+    </div>
+
+    <!-- ========== MOBILE ========== -->
+    <div class="hero-mobile">
+      <div class="handy02">
+        <img class="bg"       src="https://raw.githubusercontent.com/Koogeocimo/beforezerosource/main/01_image/scrolling3/bg_gray.webp" alt="" />
+        <img class="redlight" src="https://raw.githubusercontent.com/Koogeocimo/beforezerosource/main/01_image/scrolling3/00_redlight.webp" alt="" />
+
+        <div class="promo-strip-wrap">
+          <div class="promo-strip">
+            <!-- SET A -->
+            <div class="promo-card"><iframe src="https://www.youtube.com/embed/lcdZ90OQtLI?autoplay=1&muted=1&controls=0&loop=1&playlist=lcdZ90OQtLI&rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+            <div class="promo-card"><iframe src="https://www.youtube.com/embed/lcdZ90OQtLI?autoplay=1&muted=1&controls=0&loop=1&playlist=lcdZ90OQtLI&rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+            <div class="promo-card"><iframe src="https://www.youtube.com/embed/lcdZ90OQtLI?autoplay=1&muted=1&controls=0&loop=1&playlist=lcdZ90OQtLI&rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+            <div class="promo-card"><iframe src="https://www.youtube.com/embed/lcdZ90OQtLI?autoplay=1&muted=1&controls=0&loop=1&playlist=lcdZ90OQtLI&rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+            <div class="promo-card"><iframe src="https://www.youtube.com/embed/lcdZ90OQtLI?autoplay=1&muted=1&controls=0&loop=1&playlist=lcdZ90OQtLI&rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+            <div class="promo-card"><iframe src="https://www.youtube.com/embed/lcdZ90OQtLI?autoplay=1&muted=1&controls=0&loop=1&playlist=lcdZ90OQtLI&rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+            <div class="promo-card"><iframe src="https://www.youtube.com/embed/lcdZ90OQtLI?autoplay=1&muted=1&controls=0&loop=1&playlist=lcdZ90OQtLI&rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+            <div class="promo-card"><iframe src="https://www.youtube.com/embed/lcdZ90OQtLI?autoplay=1&muted=1&controls=0&loop=1&playlist=lcdZ90OQtLI&rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+            <!-- SET B -->
+            <div class="promo-card"><iframe src="https://www.youtube.com/embed/lcdZ90OQtLI?autoplay=1&muted=1&controls=0&loop=1&playlist=lcdZ90OQtLI&rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+            <div class="promo-card"><iframe src="https://www.youtube.com/embed/lcdZ90OQtLI?autoplay=1&muted=1&controls=0&loop=1&playlist=lcdZ90OQtLI&rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+            <div class="promo-card"><iframe src="https://www.youtube.com/embed/lcdZ90OQtLI?autoplay=1&muted=1&controls=0&loop=1&playlist=lcdZ90OQtLI&rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+            <div class="promo-card"><iframe src="https://www.youtube.com/embed/lcdZ90OQtLI?autoplay=1&muted=1&controls=0&loop=1&playlist=lcdZ90OQtLI&rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+            <div class="promo-card"><iframe src="https://www.youtube.com/embed/lcdZ90OQtLI?autoplay=1&muted=1&controls=0&loop=1&playlist=lcdZ90OQtLI&rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+            <div class="promo-card"><iframe src="https://www.youtube.com/embed/lcdZ90OQtLI?autoplay=1&muted=1&controls=0&loop=1&playlist=lcdZ90OQtLI&rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+            <div class="promo-card"><iframe src="https://www.youtube.com/embed/lcdZ90OQtLI?autoplay=1&muted=1&controls=0&loop=1&playlist=lcdZ90OQtLI&rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+            <div class="promo-card"><iframe src="https://www.youtube.com/embed/lcdZ90OQtLI?autoplay=1&muted=1&controls=0&loop=1&playlist=lcdZ90OQtLI&rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+          </div>
+        </div>
+
+        <img class="art-0510" src="https://raw.githubusercontent.com/Koogeocimo/beforezerosource/main/01_image/scrolling3/0510_02.webp" alt="" />
+        <img class="art-0104" src="https://raw.githubusercontent.com/Koogeocimo/beforezerosource/main/01_image/scrolling3/0104_02.webp" alt="" />
+        <img class="art-1115" src="https://raw.githubusercontent.com/Koogeocimo/beforezerosource/main/01_image/scrolling3/1115_02.webp" alt="" />
+        <img class="art-1619" src="https://raw.githubusercontent.com/Koogeocimo/beforezerosource/main/01_image/scrolling3/1619_02.webp" alt="" />
+
+        <div class="grad-overlay"></div>
+
+        <img class="title-img" src="https://raw.githubusercontent.com/Koogeocimo/beforezerosource/main/01_image/scrolling3/standW_horizon_W.webp" alt="在那出現之前 BEFORE ZERO" />
+
+        <div class="date-group">
+          <div class="date-range">0508 - 0517</div>
+          <div class="date-year">2026</div>
+          <div class="venue">國立臺灣科學教育館 東側特展區 七、八樓</div>
+        </div>
+
+        <div class="promo-horizontal">
+          <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ?si=VkerXtSVT1FphWzF&autoplay=1&muted=1&controls=0&loop=1&playlist=dQw4w9WgXcQ" allow="autoplay; encrypted-media" allowfullscreen title="宣傳片 橫向"></iframe>
+        </div>
+
+        <div class="body-text">
+          在生成與流逝之間，存在著一段尚未被命名的過程；語言還未介入；形象仍在醞釀；唯有感知、技術與物質在暗中流動，為即將到來的「出現」開闢場域。<br /><br />
+          如今，科技與工具不斷更新、被快速複製與疊代，壓縮著「之前」與「之後」的距離，讓我們不禁回到一個根本的提問：當「新媒體藝術」與技術演進並行，我們如何能透過自身經驗與創作去回應這些逐漸扁平的臨界時刻？<br /><br />
+          本屆北藝大新媒體藝術學系111級畢業展「在那出現之前 Before Zero」，匯集了多件創作共同關注那些「尚未」的狀態：在思維被語言包覆之前、在影像被意識捕捉之前，當世界未定形之際，我們期待透過光影、聲響、資料與敘事的交錯，邀請觀眾游移在那個「之前」，共同感受潛伏其中的細微線索。<br /><br />
+          我們透過未知來預留空間，既向後回望，也向前逼近，讓「臨界」不再是值與線，而能構成一個場域。在「那」出現之前，得以深刻感受蠢蠢欲動的未定狀態。
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <script>
+    function applyScale(wrapperSelector, frameSelector, baseWidth, baseHeight) {
+      const wrapper = document.querySelector(wrapperSelector);
+      const frame   = document.querySelector(frameSelector);
+      if (!wrapper || !frame) return;
+      const scale = wrapper.clientWidth / baseWidth;
+      frame.style.transform = `translate(-50%, 0) scale(${scale})`;
+      wrapper.style.height  = `${baseHeight * scale}px`;
+    }
+
+    function updateHeroScale() {
+      const isMobile = window.matchMedia('(max-width: 768px)').matches;
+      if (isMobile) {
+        applyScale('.hero-mobile', '.handy02', 390, 1688);
+      } else {
+        applyScale('.hero-desktop', '.frame7', 1440, 3050);
+      }
+    }
+
+    window.addEventListener('load',   updateHeroScale);
+    window.addEventListener('resize', updateHeroScale);
+
+    // ── Drag-to-scroll (scale-aware) ───────────────────────────────────────
+    // The .frame7 / .handy02 containers are CSS-scaled, so raw clientX deltas
+    // must be divided by that scale to get strip-space pixels.
+
+    function getFrameScale(stripEl) {
+      // Walk up to find the scaled frame (.frame7 or .handy02)
+      let el = stripEl.parentElement;
+      while (el && !el.classList.contains('frame7') && !el.classList.contains('handy02')) {
+        el = el.parentElement;
+      }
+      if (!el) return 1;
+      const matrix = new DOMMatrix(window.getComputedStyle(el).transform);
+      return matrix.a; // scaleX
+    }
+
+    function initDragStrip(stripEl, oneSetWidth, animDuration) {
+      let isDragging    = false;
+      let startX        = 0;         // clientX at drag start
+      let dragOffset    = 0;         // strip-space offset when drag started
+      let currentOffset = 0;         // live strip-space offset while dragging
+
+      // Capture current animation position in strip-space pixels
+      function captureAnimOffset() {
+        // animationDelay trick: negative delay = elapsed time
+        const style   = window.getComputedStyle(stripEl);
+        const delay   = parseFloat(style.animationDelay) || 0; // negative = elapsed
+        const elapsed = -delay; // seconds already played
+        const progress = (elapsed % animDuration) / animDuration;
+        return -(progress * oneSetWidth);
+      }
+
+      function startDrag(clientX) {
+        isDragging    = true;
+        dragOffset    = captureAnimOffset();
+        currentOffset = dragOffset;
+        startX        = clientX;
+        stripEl.style.animationPlayState = 'paused';
+        // Freeze the strip visually at captured position
+        stripEl.style.transform = `translateX(${dragOffset}px)`;
+        stripEl.style.cursor    = 'grabbing';
+      }
+
+      function moveDrag(clientX) {
+        if (!isDragging) return;
+        const scale = getFrameScale(stripEl);
+        const delta = (clientX - startX) / scale;  // convert screen→strip pixels
+        let newOffset = dragOffset + delta;
+        // Wrap within [-oneSetWidth, 0]
+        newOffset = ((newOffset % oneSetWidth) - oneSetWidth) % oneSetWidth;
+        currentOffset = newOffset;
+        stripEl.style.transform = `translateX(${newOffset}px)`;
+      }
+
+      function endDrag() {
+        if (!isDragging) return;
+        isDragging = false;
+        stripEl.style.cursor = 'grab';
+        // Resume animation from current position using negative animationDelay
+        const progress = Math.abs(currentOffset) / oneSetWidth;
+        const elapsed  = progress * animDuration;
+        stripEl.style.transform        = '';
+        stripEl.style.animationDelay   = `-${elapsed}s`;
+        stripEl.style.animationPlayState = 'running';
+      }
+
+      // Mouse
+      stripEl.addEventListener('mousedown', e => { e.preventDefault(); startDrag(e.clientX); });
+      document.addEventListener('mousemove', e => { if (isDragging) moveDrag(e.clientX); });
+      document.addEventListener('mouseup',   () => endDrag());
+
+      // Touch
+      stripEl.addEventListener('touchstart', e => startDrag(e.touches[0].clientX), { passive: true });
+      document.addEventListener('touchmove',  e => { if (isDragging) moveDrag(e.touches[0].clientX); }, { passive: true });
+      document.addEventListener('touchend',   () => endDrag());
+
+      stripEl.style.cursor = 'grab';
+    }
+
+    window.addEventListener('load', () => {
+      document.querySelectorAll('.frame7 .promo-strip').forEach(el => {
+        initDragStrip(el, 1892.24, 80);
+      });
+      document.querySelectorAll('.handy02 .promo-strip').forEach(el => {
+        initDragStrip(el, 1252.24, 80);
+      });
+    });
+  </script>
+</body>
+</html>
